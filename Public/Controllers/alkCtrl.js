@@ -1,0 +1,1 @@
+app.controller('alkCtrl', function($scope, $rootScope, $location){})
