@@ -1,0 +1,49 @@
+body{
+    background-color: slategray;
+}
+
+.container{
+    border-radius: 25px;
+    border: 2px solid rgb(0, 157, 255);
+    padding: 20px;
+    background-color: white;
+    
+}
+header{
+    border-radius: 25px;
+    border: 2px solid rgb(0, 157, 255);
+    background-color: silver;
+    text-shadow: 0 0 20px black;
+    text-align: center;
+    height: 120px;
+    font-size: 250%;
+    padding: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    
+}
+
+footer{
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    letter-spacing: 3px;
+    font-size: 80%;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid rgb(0, 157, 255);
+}
+h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+nav{
+    border-radius: 25px;
+    border: 2px solid rgb(0, 157, 255);
+}
+
+main{
+    margin-top: 15px;
+}
