@@ -4,31 +4,31 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          NavItem 
+          Alkalmazott kezelése
         </button>
       </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" ng-model="alk.name">
                     <label for="name">Név</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="address">
+                    <input type="text" class="form-control" id="address" ng-model="alk.address">
                     <label for="address">Lakcím</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="position">
+                    <input type="text" class="form-control" id="position" ng-model="alk.position">
                     <label for="position">Pozíció</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="pricePerHour">
+                    <input type="number" class="form-control" id="pricePerHour" ng-model="alk.pricePerHour">
                     <label for="pricePerHour">Órabér</label>
                 </div>
                 <button class="btn btn-primary mb-3" ng-click="insert()" ng-if="!editMode">Insert</button>
-                <button class="btn btn-warning mb-3" ng-click="update(navitem.ID)" ng-if="!editMode">Update</button>
-                <button class="btn btn-danger mb-3" ng-click="delete(navitem.ID)" ng-if="!editMode">Delete</button>
-                <button class="btn btn-secondary mb-3" ng-click="cancel()" ng-if="!editMode">Cancel</button>
+                <button class="btn btn-warning mb-3" ng-click="update(alk.ID)" ng-if="editMode">Update</button>
+                <button class="btn btn-danger mb-3" ng-click="delete(alk.ID)" ng-if="editMode">Delete</button>
+                <button class="btn btn-secondary mb-3" ng-click="cancel()" ng-if="editMode">Cancel</button>
             </div>
         </div>
     </div>
@@ -38,15 +38,19 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>NavItem name</th>
-            <th>url</th>
+            <th>Név</th>
+            <th>Lakcím</th>
+            <th>Pozíció</th>
+            <th>Órabér</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in navitems" ng-click="selectItem(item.ID)">
+        <tr ng-repeat="item in alks" ng-click="selectItem(item.ID)">
             <td>{{$index+1}}.</td>
             <td>{{item.name}}</td>
-            <td>{{item.url}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.position}}</td>
+            <td>{{item.pricePerHour}}</td>
         </tr>
     </tbody>
     <tfoot>

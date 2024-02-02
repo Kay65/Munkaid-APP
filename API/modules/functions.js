@@ -36,7 +36,7 @@ function getOperator(op){
 
 function tokencheck(){
     return (req, res, next) =>{
-        
+    /*    
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
         //console.log(token)
@@ -55,8 +55,9 @@ function tokencheck(){
             next();
         });
 
-    }
-}
+    }*/
+    next();
+}}
 
 // export functions
 module.exports = { 

@@ -1,4 +1,4 @@
-var app = angular.module('Munkaido_app', ['ngRoute']);
+var app = angular.module('Munkaido_app', ['ngRoute','ngNotify']);
 app.run(function($rootScope){
     $rootScope.appTitle = "Munkaidő App";
     $rootScope.author = "5/13.SZOFT";
