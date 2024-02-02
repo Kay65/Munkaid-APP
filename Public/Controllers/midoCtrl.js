@@ -45,7 +45,7 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
     }
     
     $scope.delete = function(id){
-        if (confirm('Are you sure you want to delete this navitem?')){
+        if (confirm('Are you sure you want to delete this item?')){
             axios.delete($rootScope.serverUrl+'/db/worktimes/ID/eq/'+id, $rootScope.token).then(res=>{
                 ngNotify.set('Sikeres törlés!', 'success');
                 $scope.getItems();
@@ -66,4 +66,6 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
         $scope.editMode = false;
         $scope.navitem = {};
     }
+
+
     })

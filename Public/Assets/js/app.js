@@ -8,7 +8,16 @@ app.run(function($rootScope){
 
     $rootScope.serverUrl = 'http://localhost:5000';
     $rootScope.appUrl = 'http://127.0.0.1:5500/index.html';
+    
+    $rootScope.alks=[];
+    $rootScope.getalks = function(){
+        axios.get($rootScope.serverUrl+'/db/employees', $rootScope.token).then(res=>{
+            $rootScope.alks = res.data;
+        });
     }
+    }
+
+    
 )
 app.config(function($routeProvider) {
     $routeProvider
@@ -21,3 +30,4 @@ app.config(function($routeProvider) {
         controller: 'midoCtrl',
     })
 })
+

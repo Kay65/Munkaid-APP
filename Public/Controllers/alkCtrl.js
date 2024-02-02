@@ -45,7 +45,7 @@ $scope.update = function(id){
 }
 
 $scope.delete = function(id){
-    if (confirm('Are you sure you want to delete this navitem?')){
+    if (confirm('Are you sure you want to delete this item?')){
         axios.delete($rootScope.serverUrl+'/db/employees/ID/eq/'+id, $rootScope.token).then(res=>{
             ngNotify.set('Sikeres törlés!', 'success');
             $scope.getItems();
@@ -66,4 +66,7 @@ $scope.cancel = function(){
     $scope.editMode = false;
     $scope.navitem = {};
 }
+
+
 })
+
