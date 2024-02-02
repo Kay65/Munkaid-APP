@@ -1,29 +1,31 @@
-<div ng-contorller="alkCtrl" class="col-lg-4 offset-lg-4"></div>
-<h3 class="mb-4 mt-3">Alkalmazottak</h3>
+<div ng-contorller="midoCtrl" class="col-lg-4 offset-lg-4"></div>
+<h3 class="mb-4 mt-3">Munkaidők</h3>
 <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Alkalmazott kezelése
+          Munkaidők kezelése
         </button>
       </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="name" ng-model="alk.name">
-                    <label for="name">Név</label>
+                    <select class="form-select" id="name" ng-model="mido.name">
+                        <option value="{{item.ID}}" ng-repeat="item in alks">{{alk.name}}</option>
+                    </select>
+                    <label for="floatingSelect">Alkalmazott</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="address" ng-model="alk.address">
-                    <label for="address">Lakcím</label>
+                    <input type="date" class="form-control" id="date" ng-model="mido.date">
+                    <label for="address">Dátum</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="position" ng-model="alk.position">
-                    <label for="position">Pozíció</label>
+                    <input type="time" class="form-control" id="start" ng-model="mido.start">
+                    <label for="position">Kezdés</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="pricePerHour" ng-model="alk.pricePerHour">
-                    <label for="pricePerHour">Órabér</label>
+                    <input type="time" class="form-control" id="end" ng-model="mido.end">
+                    <label for="end">Végzés</label>
                 </div>
                 <button class="btn btn-primary mb-3" ng-click="insert()" ng-if="!editMode">Insert</button>
                 <button class="btn btn-warning mb-3" ng-click="update(alk.ID)" ng-if="editMode">Update</button>
@@ -38,10 +40,10 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Név</th>
-            <th>Lakcím</th>
-            <th>Pozíció</th>
-            <th>Órabér</th>
+            <th>Alkalmazott</th>
+            <th>Dátum</th>
+            <th>Kezdés</th>
+            <th>Végzés</th>
         </tr>
     </thead>
     <tbody>

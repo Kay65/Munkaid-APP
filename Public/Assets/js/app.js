@@ -16,4 +16,8 @@ app.config(function($routeProvider) {
         templateUrl: 'Views/alk.html',
         controller: 'alkCtrl',
     })
+    .when('/mido', {
+        templateUrl: 'Views/mido.html',
+        controller: 'midoCtrl',
+    })
 })
