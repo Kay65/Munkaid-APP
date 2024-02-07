@@ -10,15 +10,20 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
         });
     }
     $scope.getItems()
+    axios.get($rootScope.serverUrl+'/db/employees', $rootScope.token).then(res => {
+        $scope.alks = res.data;
+        $rootScope.Alks = $scope.alks;
+        $scope.$apply();
+    });
     $scope.insert = function(){
         if ($scope.mido.name == null || $scope.mido.date == null || $scope.mido.start == null || $scope.mido.end == null){
             ngNotify.set('Adj meg minden adatot!', 'error');
         }else{
             let data = {
-                name: $scope.mido.name,
-                address: $scope.mido.date,
-                position: $scope.mido.start,
-                pricePerHour: $scope.mido.end
+                empID: $scope.mido.name,
+                date: $scope.mido.date,
+                start: $scope.mido.start,
+                end: $scope.mido.end
             }
             axios.post($rootScope.serverUrl+'/db/worktimes', data, $rootScope.token).then(
                 res =>{
@@ -59,7 +64,7 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
     // menüpont kiválasztása a táblázatban
     $scope.selectItem = function(id){
         $scope.editMode = true;
-        $scope.alk = $scope.midok.find(item => item.ID == id);
+        $scope.mido = $scope.midok.find(item => item.ID == id);
     }
     
     $scope.cancel = function(){
