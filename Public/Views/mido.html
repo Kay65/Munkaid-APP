@@ -47,12 +47,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in alks" ng-click="selectItem(item.ID)">
+        <tr ng-repeat="item in midok" ng-click="selectItem(item.ID)">
             <td>{{$index+1}}.</td>
-            <td>{{item.name}}</td>
-            <td>{{item.address}}</td>
-            <td>{{item.position}}</td>
-            <td>{{item.pricePerHour}}</td>
+            <td>{{item.empID}}</td>
+            <td>{{item.date | date: 'yyyy.MM.dd'}}</td>
+            <td>{{item.start}}</td>
+            <td>{{item.end}}</td>
         </tr>
     </tbody>
 </table>

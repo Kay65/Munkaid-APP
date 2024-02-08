@@ -29,17 +29,17 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
                 res =>{
                     ngNotify.set('Munkaidő sikeresen hozzáadva!', 'success');
                     $scope.getItems();
-                    $scope.alk = {};
+                    $scope.mido = {};
                 }
             );
         }
     }
     $scope.update = function(id){
         let data = {
-            name: $scope.mido.name,
-            address: $scope.mido.date,
-            position: $scope.mido.start,
-            pricePerHour: $scope.mido.end
+            empID: $scope.mido.name,
+            date: $scope.mido.date,
+            start: $scope.mido.start,
+            start: $scope.mido.end
         }
         axios.patch($rootScope.serverUrl+'/db/worktimes/ID/eq/'+id, data, $rootScope.token).then(res=>{
             ngNotify.set('Sikeres frissítés!', 'success');
@@ -59,17 +59,27 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
             });
         }
     }
+    function toTime(timeString){
+        var timeTokens = timeString.split(':');
+        return new Date(1970,0,1, timeTokens[0], timeTokens[1], timeTokens[2]);
+    }
     
     
     // menüpont kiválasztása a táblázatban
     $scope.selectItem = function(id){
         $scope.editMode = true;
         $scope.mido = $scope.midok.find(item => item.ID == id);
+        $scope.mido.date =new Date( moment($scope.mido.date).format("YYYY-MM-DD"))
+        starttime=toTime($scope.mido.start)
+        endtime=toTime($scope.mido.end)
+        $scope.mido.start =new Date( starttime)
+        $scope.mido.end =new Date( endtime )
+        console.log($scope.mido)
     }
     
     $scope.cancel = function(){
         $scope.editMode = false;
-        $scope.navitem = {};
+        $scope.mido = {};
     }
 
 
