@@ -8,13 +8,13 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
             $rootScope.Midok = $scope.midok;
             $scope.$apply();
         });
+        axios.get($rootScope.serverUrl+'/db/employees', $rootScope.token).then(res => {
+            $scope.alks = res.data;
+            $rootScope.Alks = $scope.alks;
+            $scope.$apply();
+        });
     }
     $scope.getItems()
-    axios.get($rootScope.serverUrl+'/db/employees', $rootScope.token).then(res => {
-        $scope.alks = res.data;
-        $rootScope.Alks = $scope.alks;
-        $scope.$apply();
-    });
     $scope.insert = function(){
         if ($scope.mido.name == null || $scope.mido.date == null || $scope.mido.start == null || $scope.mido.end == null){
             ngNotify.set('Adj meg minden adatot!', 'error');
@@ -39,8 +39,9 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
             empID: $scope.mido.name,
             date: $scope.mido.date,
             start: $scope.mido.start,
-            start: $scope.mido.end
+            end: $scope.mido.end
         }
+        console.log
         axios.patch($rootScope.serverUrl+'/db/worktimes/ID/eq/'+id, data, $rootScope.token).then(res=>{
             ngNotify.set('Sikeres frissítés!', 'success');
             $scope.getItems();
@@ -59,10 +60,6 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
             });
         }
     }
-    function toTime(timeString){
-        var timeTokens = timeString.split(':');
-        return new Date(1970,0,1, timeTokens[0], timeTokens[1], timeTokens[2]);
-    }
     
     
     // menüpont kiválasztása a táblázatban
@@ -70,10 +67,8 @@ app.controller('midoCtrl', function($scope, ngNotify, $rootScope){
         $scope.editMode = true;
         $scope.mido = $scope.midok.find(item => item.ID == id);
         $scope.mido.date =new Date( moment($scope.mido.date).format("YYYY-MM-DD"))
-        starttime=toTime($scope.mido.start)
-        endtime=toTime($scope.mido.end)
-        $scope.mido.start =new Date( starttime)
-        $scope.mido.end =new Date( endtime )
+        starttime=($scope.mido.start)
+        endtime=($scope.mido.end)
         console.log($scope.mido)
     }
     

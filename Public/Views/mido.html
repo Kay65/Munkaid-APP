@@ -20,16 +20,16 @@
                     <label for="address">Dátum</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="time" class="form-control" id="start" ng-model="mido.start">
+                    <input type="text" ng-pattern="/^(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)$/" class="form-control" id="start" ng-model="mido.start">
                     <label for="position">Kezdés</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="time" class="form-control" id="end" ng-model="mido.end">
+                    <input type="text" ng-pattern="/^(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)$/" class="form-control" id="end" ng-model="mido.end">
                     <label for="end">Végzés</label>
                 </div>
                 <button class="btn btn-primary mb-3" ng-click="insert()" ng-if="!editMode">Insert</button>
-                <button class="btn btn-warning mb-3" ng-click="update(alk.ID)" ng-if="editMode">Update</button>
-                <button class="btn btn-danger mb-3" ng-click="delete(alk.ID)" ng-if="editMode">Delete</button>
+                <button class="btn btn-warning mb-3" ng-click="update(mido.ID)" ng-if="editMode">Update</button>
+                <button class="btn btn-danger mb-3" ng-click="delete(mido.ID)" ng-if="editMode">Delete</button>
                 <button class="btn btn-secondary mb-3" ng-click="cancel()" ng-if="editMode">Cancel</button>
             </div>
         </div>
